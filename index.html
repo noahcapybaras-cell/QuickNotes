@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111116">
+    <title>QuickNotes — Your personal space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">Q</div>
+            <span>QuickNotes<span class="brand-dot">.</span></span>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="section-label">WORKSPACE</p>
+            <button class="nav-item active" id="allNotesBtn">
+                <span>▤</span> All notes
+                <span class="nav-count" id="noteCount">0</span>
+            </button>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="storage-status">
+                <span class="status-dot"></span>
+                Your notes are saved locally
+            </div>
+            <p>QUICKNOTES V2.0</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">WORKSPACE / NOTES</p>
+                <h1>My Notes</h1>
+            </div>
+            <button class="create-btn" id="newNoteBtn">
+                <span>+</span> New note
+            </button>
+        </header>
+
+        <section class="toolbar">
+            <div class="welcome">
+                <h2>Your thoughts, organized.</h2>
+                <p>A little space for everything on your mind.</p>
+            </div>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="text" id="searchInput"
+                       placeholder="Search your notes..." autocomplete="off">
+                <kbd>⌕</kbd>
+            </div>
+        </section>
+
+        <section class="notes-section">
+            <div class="notes-heading">
+                <div>
+                    <h3>All notes</h3>
+                    <span id="notesSubtitle">0 notes</span>
+                </div>
+            </div>
+
+            <div class="notes-grid" id="notesGrid"></div>
+
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">✎</div>
+                <h3>No notes yet</h3>
+                <p>Your next great idea deserves a place.</p>
+                <button class="create-btn" id="emptyCreateBtn">
+                    + Create your first note
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <span>Made for your thoughts.</span>
+            <span>QuickNotes © 2026</span>
+        </footer>
+    </main>
+</div>
+
+<!-- NOTE EDITOR -->
+<div class="modal-overlay" id="editorOverlay">
+    <div class="editor-modal">
+        <div class="editor-header">
+            <span id="editorLabel">NEW NOTE</span>
+            <button class="close-btn" id="closeEditorBtn">×</button>
+        </div>
+
+        <input type="text" id="noteTitle" class="title-input"
+               placeholder="Untitled note" maxlength="100">
+
+        <div class="editor-tools">
+            <select id="fontSelect" aria-label="Font family">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Impact">Impact</option>
+            </select>
+
+            <select id="sizeSelect" aria-label="Text size">
+                <option value="3">Normal</option>
+                <option value="2">Small</option>
+                <option value="4">Large</option>
+                <option value="5">Huge</option>
+            </select>
+
+            <button type="button" class="tool-btn" data-command="bold"><b>B</b></button>
+            <button type="button" class="tool-btn" data-command="italic"><i>I</i></button>
+            <button type="button" class="tool-btn" data-command="underline"><u>U</u></button>
+            <button type="button" class="tool-btn" data-command="strikeThrough"><s>S</s></button>
+            <button type="button" class="tool-btn" data-command="formatBlock"
+                    data-value="H2">H</button>
+            <button type="button" class="tool-btn" data-command="insertUnorderedList">☷</button>
+            <button type="button" class="tool-btn" data-command="justifyLeft">⇤</button>
+            <button type="button" class="tool-btn" data-command="justifyCenter">≡</button>
+
+            <label class="color-control" title="Text color">
+                <span>A</span>
+                <input type="color" id="textColor" value="#e8e8ef">
+            </label>
+        </div>
+
+        <div id="noteContent" class="content-input" contenteditable="true"
+             data-placeholder="Start writing your thoughts..."></div>
+
+        <div class="note-options">
+            <label>
+                Note color
+                <select id="noteColor">
+                    <option value="default">Default</option>
+                    <option value="purple">Purple</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="orange">Orange</option>
+                    <option value="pink">Pink</option>
+                </select>
+            </label>
+
+            <label class="pin-option">
+                <input type="checkbox" id="pinNote">
+                Pin this note 📌
+            </label>
+        </div>
+
+        <div class="editor-footer">
+            <button class="delete-btn" id="deleteNoteBtn">Delete</button>
+            <div class="editor-actions">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="save-btn" id="saveNoteBtn">Save note</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
